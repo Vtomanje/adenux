@@ -1,0 +1,104 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.css"/>
+    
+    <!--<link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css" />-->
+   
+    <!--Favicon
+    <link rel="icon" type="image/x-icon" href="{% static 'img/favicon.ico' %}">
+
+    <!--Boxicons-->
+    <link href='https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css' rel='stylesheet'>
+
+
+    <!--select2-->
+    <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
+    
+    
+    <!--select2-->
+    <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
+    
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            sky: colors.sky,
+            teal: colors.teal,
+            rose: colors.rose,
+          },
+            colors: {
+              
+              transparent: 'transparent',
+              current: 'currentColor',
+              pink: colors.pink,
+              blue: colors.blue,
+              sky: color.sky,
+              black: colors.black,
+              white: colors.white,
+              gray: colors.slate,
+              green: colors.emerald,
+              purple: colors.violet,
+              yellow: colors.amber,
+              fuchsia: colors.fuchsia,
+              emerald: colors.emerald,
+              indigo: colors.indigo,
+              yellow: colors.yellow,
+              red: colors.red,
+              orange: colors.orange,
+            },
+        },
+      }
+    </script>
+
+    <!-- AlpineJS -->
+    <script src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.8.2/dist/alpine.min.js" defer></script>
+
+    <!--JQuery-->
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/js/all.min.js" integrity="sha256-KzZiKy0DWYsnwMF+X1DvQngQ2/FxF7MF3Ff72XcpuPs=" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/swiper@10/swiper-element-bundle.min.js"></script>
+    <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js" defer></script>
+    <!--<script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>-->
+
+
+    <script>
+      {% if messages %}
+          var html_mensaje = '';
+          {% for mensaje in messages %}
+              html_mensaje += '{{ mensaje }}';
+          {% endfor %}
+          notificacionError(html_mensaje);
+      {% endif %}
+  </script>
+
+  <title>{% block title %}{% endblock title %}</title>
+  {% block description %}{% endblock description %}
+  {% block tags %}{% endblock tags %}
+  {% block css %}{% endblock css %}
+
+</head>
+
+<body>
+
+  {% block content %}
+  {% endblock content %}
+
+  {% block js %}{% endblock js %}
+
+  {% block javascript %}{% endblock javascript %}
+
+</body>
+</html>
+

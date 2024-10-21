@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+{% load crispy_forms_tags %}
+
+{% block content %}
+
+<div class="container mx-auto">
+    <div class="text-center text-3xl mt-28"> 
+        <a href="{% url 'home_app:dashAdministracion' %}">Registro de Usuario</a>
+    </div>
+    
+    <form class="max-w-sm mx-auto mt-10" method="POST" enctype="multipart/form-data">{% csrf_token %}
+        {{ form|crispy }}
+        
+        <button type="submit" class="w-full mt-10 text-white bg-sky-600 hover:bg-sky-400 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center">
+            Registrarse
+        </button> 
+    </form> 
+</div>
+
+{% endblock %}

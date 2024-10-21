@@ -1,0 +1,53 @@
+{% extends "base.html" %}
+{% load  static %}
+
+
+{% load tailwind_filters %}
+{% load crispy_forms_tags %}
+
+{% block content %}
+
+<div class="h-screen flex items-center justify-center">
+    <div class="container mx-auto flex flex-col md:flex-row items-stretch justify-center w-full h-full border border-gray-50 shadow-lg">
+        <!-- Columna del formulario -->
+        <div class="w-full md:w-1/2 flex items-center justify-center">
+            <div class="max-w-sm w-full bg-white p-6 flex flex-col items-center"> <!-- Asegurando que el contenido sea un flex column y centrado -->
+                <a href="{% url 'home_app:home' %}"><img src="{% static 'img/logo-login.png' %}" alt="" class="mb-10 w-28 h-28"></a> <!-- Se eliminan las clases items-center y justify-center de la imagen -->
+                <div class="font-serif text-center text-lgl mb-4"> 
+                    Inicio de Sesión
+                </div>
+                
+                <form class="mt-10 w-full" method="POST" enctype="multipart/form-data">
+                    {% csrf_token %}
+                    <div class="mb-5">
+                        {{ form|crispy }}
+                    </div>
+                    
+                    <div>
+                        <button type="submit" class="w-full mt-10 text-white bg-sky-600 hover:bg-sky-400 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
+                            Ingresar
+                        </button> 
+                    </div>
+                </form>
+            </div>
+        </div>
+        
+
+        <!-- Columna de la imagen con fondo gris que ocupa toda la altura y el ancho del contenedor -->
+        <div class="bg-gray-100 w-full md:w-1/2 h-full p-4 flex items-center justify-center shadow-lg"
+             style="background-image: url('{% static 'img/tomb.jpg' %}'); 
+                background-size: cover; 
+                background-position: center; 
+                background-repeat: no-repeat;">
+        </div>
+</div>
+
+
+
+
+
+
+
+
+
+{% endblock content %}

@@ -1,0 +1,88 @@
+{% load static %}
+
+
+<header class="fixed top-0 left-0 w-full z-50" 
+        style="background-image: url('{% static 'img/navBg.jpg' %}'); 
+               background-size: cover; 
+               background-position: center; 
+               background-repeat: no-repeat;">
+       
+    <div class="w-full">
+        <div class="container max-w-screen-xl h-20 md:h-24 flex items-center justify-between px-4 mx-auto">
+            <a href="{% url 'home_app:home' %}" class="flex items-center">
+                <img src="{% static 'img/logoNav200.png' %}" class="h-10 w-auto md:h-12 lg:h-16" alt="Logo"/>
+            </a>
+            <div class="flex items-center space-x-2 sm:space-x-4 rtl:space-x-reverse">
+                {% if user.is_authenticated %}
+                    <h4 class="text-xs sm:text-sm text-white">{{ group_name_singular|capfirst }}</h4>
+                    <h4 class="text-xs sm:text-sm text-white">|</h4>
+                    <a href="{% url 'home_app:dashAdministracion' %}" class="text-xs sm:text-sm mx-1 text-gray-100 hover:underline">{{ user.first_name }} {{ user.last_name }}</a>
+                    <a href="{% url 'logout' %}" class="hidden md:inline text-white bg-red-600 hover:bg-red-400 rounded-lg text-sm px-2 py-1">Cerrar Sesión</a>
+                {% else %}
+                    <a href="{% url 'login' %}" class="text-white bg-blue-600 hover:bg-blue-400 rounded-lg text-sm px-2 py-1">Iniciar Sesión</a>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+
+    <div class="bg-blue-700 h-10">
+        <nav class="container mx-auto w-full h-full">
+            <ul id="menu" class="hidden sm:flex justify-center space-x-8 text-white text-lg h-full">
+                <li><a href="#" class="hover:text-blue-300 text-sm">Home</a></li>
+                <li><a href="#" class="hover:text-blue-300 text-sm">Quiénes Somos</a></li>
+                <li><a href="#" class="hover:text-blue-300 text-sm">Docentes</a></li>
+                <li><a href="#" class="hover:text-blue-300 text-sm">Programas</a></li>
+                <li><a href="#" class="hover:text-blue-300 text-sm">Acreditación</a></li>
+                <li><a href="#" class="hover:text-blue-300 text-sm">Contáctanos</a></li>
+            </ul>
+            <div id="menu-card" class="hidden bg-black rounded-lg p-4 mt-2">
+                <ul class="flex flex-col space-y-2 text-white text-sm">
+                    <li><a href="#" class="hover:text-blue-300">Home</a></li>
+                    <li><a href="#" class="hover:text-blue-300">Quiénes Somos</a></li>
+                    <li><a href="#" class="hover:text-blue-300">Acreditación</a></li>
+                    <li><a href="#" class="hover:text-blue-300">Programas</a></li>
+                    <li><a href="#" class="hover:text-blue-300">Docentes</a></li>
+                    <li><a href="#" class="hover:text-blue-300">Contáctanos</a></li>
+                    {% if user.is_authenticated %}
+                        <li>
+                            <a href="#" class="text-white bg-red-600 hover:bg-red-400 rounded-lg text-sm px-2 py-1">Cerrar Sesión</a>
+                        </li>
+                    {% endif %}
+                </ul>
+            </div>
+        </nav>
+    </div>   
+</header>
+
+
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const swiper = new Swiper('.swiper', {
+            direction: 'horizontal',
+            loop: true,
+            slidesPerView: 1,
+            spaceBetween: 30,
+            autoplay: {
+                delay: 15000,
+                disableOnInteraction: false,
+            },
+            navigation: {
+                nextEl: '.swiper-button-next',
+                prevEl: '.swiper-button-prev',
+            },
+            pagination: {
+                el: '.swiper-pagination',
+                clickable: true,
+            },
+        });
+
+        // Event listener para el menú desplegable
+        const menuToggle = document.getElementById('menu-toggle');
+        const menuCard = document.getElementById('menu-card');
+
+        menuToggle.addEventListener('click', function() {
+            menuCard.classList.toggle('hidden');
+        });
+    });
+</script>
+
